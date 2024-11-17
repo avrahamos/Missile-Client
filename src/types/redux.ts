@@ -11,4 +11,6 @@ export interface UserState {
   error: string | null;
   status: DataStatus;
   user: IUser | null;
+  token?: string | null;
+  isUnderAttack: boolean;
 }

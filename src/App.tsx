@@ -9,12 +9,24 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to={"/login"} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route
+          path="/"
+          element={<Navigate to={token ? "/dashboard" : "/login"} />}
+        />
+
+        <Route
+          path="/login"
+          element={token ? <Navigate to="/dashboard" /> : <Login />}
+        />
+
+        <Route
+          path="/register"
+          element={token ? <Navigate to="/dashboard" /> : <Register />}
+        />
+
         <Route
           path="/dashboard"
-          element={token ? <Dashboard /> : <Navigate to="/register" />}
+          element={token ? <Dashboard /> : <Navigate to="/login" />}
         />
       </Routes>
     </>

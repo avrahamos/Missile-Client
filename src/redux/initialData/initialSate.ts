@@ -4,4 +4,6 @@ export const initialData: UserState = {
   error: null,
   status: DataStatus.IDLE,
   user: null,
+  token: null,
+  isUnderAttack: false,
 };

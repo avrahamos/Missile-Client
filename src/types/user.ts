@@ -1,3 +1,5 @@
+import { interceptors } from "../utils/utils";
+
 export interface IUser {
   userName: string;
   email: string;
@@ -25,7 +27,9 @@ export interface IMissile {
   speed: number;
 }
 export interface IDefense {
-  name: string;
+  name: InterceptorName;
   amount: number;
-  interceptSpeed: number;
+  intercepts: string[];
+  speed:number
 }
+export type InterceptorName = keyof typeof interceptors;

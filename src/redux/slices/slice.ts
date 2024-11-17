@@ -1,4 +1,4 @@
-import { ActionReducerMapBuilder, createSlice } from "@reduxjs/toolkit";
+import { ActionReducerMapBuilder, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { DataStatus, UserState } from "../../types/redux";
 import { IUser } from "../../types/user";
 import { fetchLogin, fetchRegister, fetchUserProfile } from "../fetchs/fetches";
@@ -7,7 +7,11 @@ import { initialData } from "../initialData/initialSate";
 const userSlice = createSlice({
   name: "user",
   initialState: initialData,
-  reducers: {},
+  reducers: {
+    setIsUnderAttack: (state, action: PayloadAction<boolean>) => {
+      state.isUnderAttack = action.payload;
+    },
+  },
   extraReducers: (builder: ActionReducerMapBuilder<UserState>) => {
     builder
       .addCase(fetchLogin.pending, (state) => {
@@ -52,5 +56,5 @@ const userSlice = createSlice({
       });
   },
 });
-
+export const { setIsUnderAttack } = userSlice.actions;
 export default userSlice.reducer;
